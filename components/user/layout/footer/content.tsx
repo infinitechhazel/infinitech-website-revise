@@ -97,7 +97,6 @@ const Content = ({ onOpenSupport }: ContentProps) => {
 
         <button
           onClick={() => {
-            console.log("Support button clicked");
             onOpenSupport();
           }}
           className="px-6 py-3 bg-orange-400 hover:bg-orange-500 text-black font-bold rounded-lg transition-colors flex items-center justify-center gap-2 text-sm"
