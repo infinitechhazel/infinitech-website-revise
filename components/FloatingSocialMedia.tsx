@@ -1,51 +1,58 @@
 // components/FloatingSocialMedia.tsx
-"use client";
+"use client"
 
-import React, { useState } from 'react';
-import { MessageCircle, Send, Facebook, Phone, Mail, Globe, X } from 'lucide-react';
+import React, { useState } from "react"
+import { MessageCircle, Send, Facebook, Phone, Mail, Globe, X, PhoneCall, Smartphone } from "lucide-react"
 
 const FloatingSocialMedia = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false)
 
   const socialLinks = [
     {
       href: "https://www.facebook.com/people/Infinitech-Advertising-Corp/100080647808810/",
       icon: Facebook,
       bgColor: "bg-blue-600 hover:bg-blue-700",
-      title: "Facebook"
+      title: "Facebook",
     },
-    {
-      href: "https://wa.me/",
-      icon: MessageCircle,
-      bgColor: "bg-green-600 hover:bg-green-700",
-      title: "WhatsApp"
-    },
-    {
-      href: "https://maps.google.com/?q=Campos Rueda Building, 311 Urban Ave, Makati, 1206 Metro Manila",
-      icon: Send,
-      bgColor: "bg-sky-500 hover:bg-sky-600",
-      title: "Location"
-    },
+    // {
+    //   href: "https://wa.me/",
+    //   icon: MessageCircle,
+    //   bgColor: "bg-green-600 hover:bg-green-700",
+    //   title: "WhatsApp"
+    // },
+    // {
+    //   href: "https://maps.google.com/?q=Campos Rueda Building, 311 Urban Ave, Makati, 1206 Metro Manila",
+    //   icon: Send,
+    //   bgColor: "bg-sky-500 hover:bg-sky-600",
+    //   title: "Location"
+    // },
     {
       href: "mailto:infinitechcorp.ph@gmail.com",
       icon: Mail,
       bgColor: "bg-red-600 hover:bg-red-700",
-      title: "Email"
+      title: "Email",
     },
     {
-      href: "tel:+63",
-      icon: Phone,
+      
+      href: "tel:(+63)9195874915",
+      icon: Smartphone,
       bgColor: "bg-blue-500 hover:bg-blue-600",
-      title: "Phone"
-    }
-  ];
+      title: "Phone",
+    },
+    {
+      href: "tel:(02)7001-6157",
+      icon: Phone,
+      bgColor: "bg-sky-500 hover:bg-sky-600",
+      title: "Phone",
+    },
+  ]
 
   return (
     <>
       {/* Desktop View - Always show all icons */}
       <div className="hidden md:flex fixed right-0 top-1/2 -translate-y-1/2 z-40 flex-col gap-3 pr-4">
         {socialLinks.map((link, index) => {
-          const Icon = link.icon;
+          const Icon = link.icon
           return (
             <a
               key={index}
@@ -57,7 +64,7 @@ const FloatingSocialMedia = () => {
             >
               <Icon className="w-6 h-6 text-white" />
             </a>
-          );
+          )
         })}
       </div>
 
@@ -87,8 +94,8 @@ const FloatingSocialMedia = () => {
             {/* Social Links */}
             <div className="flex flex-col-reverse gap-3 animate-fadeIn">
               {socialLinks.map((link, index) => {
-                const Icon = link.icon;
-                const reverseIndex = socialLinks.length - 1 - index;
+                const Icon = link.icon
+                const reverseIndex = socialLinks.length - 1 - index
                 return (
                   <a
                     key={index}
@@ -97,13 +104,13 @@ const FloatingSocialMedia = () => {
                     rel="noopener noreferrer"
                     className={`w-12 h-12 rounded-full ${link.bgColor} flex items-center justify-center shadow-lg transition-all hover:scale-110`}
                     style={{
-                      animation: `slideUp 0.3s ease-out ${reverseIndex * 0.1}s both`
+                      animation: `slideUp 0.3s ease-out ${reverseIndex * 0.1}s both`,
                     }}
                     title={link.title}
                   >
                     <Icon className="w-6 h-6 text-white" />
                   </a>
-                );
+                )
               })}
             </div>
           </div>
@@ -132,7 +139,7 @@ const FloatingSocialMedia = () => {
         }
       `}</style>
     </>
-  );
-};
+  )
+}
 
-export default FloatingSocialMedia;
+export default FloatingSocialMedia

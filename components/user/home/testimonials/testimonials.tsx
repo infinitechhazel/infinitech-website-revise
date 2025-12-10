@@ -1,9 +1,10 @@
-"use client";
+"use client"
 
-import React from "react";
-import { BsStarFill, BsStarHalf } from "react-icons/bs";
-import { Card, CardBody, Image } from "@heroui/react";
-import Cards from "./cards";
+import React from "react"
+import { BsStarFill, BsStarHalf } from "react-icons/bs"
+import { Card, CardBody, Image } from "@heroui/react"
+import Cards from "./cards"
+import TestimonialForm from "./testimonialsForm"
 
 const Testimonials = () => {
   const reviews = [
@@ -23,7 +24,7 @@ const Testimonials = () => {
       stars: 5,
       color: "text-red-500",
     },
-  ];
+  ]
 
   const renderStars = (stars: number, color: string) => {
     return (
@@ -33,18 +34,17 @@ const Testimonials = () => {
         ))}
         {stars % 1 !== 0 && <BsStarHalf className={`${color}`} />}
       </div>
-    );
-  };
+    )
+  }
 
   return (
-    <section className="container mx-auto py-12 lg:py-24 px-4">
+    <section className="container mx-auto px-4">
       <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
         <div>
           <Cards />
         </div>
-
         <div className="flex justify-center items-center">
-          <Card className="bg-gray-100 shadow-none w-full max-w-xl">
+          {/* <Card className="bg-gray-100 shadow-none w-full max-w-xl">
             <CardBody>
               <div className="py-32">
                 {reviews.map((review) => (
@@ -75,11 +75,12 @@ const Testimonials = () => {
                 ))}
               </div>
             </CardBody>
-          </Card>
+          </Card> */}
+          <TestimonialForm />
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Testimonials;
+export default Testimonials

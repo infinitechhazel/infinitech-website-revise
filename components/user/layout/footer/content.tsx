@@ -71,7 +71,7 @@ const Content = ({ onOpenSupport }: ContentProps) => {
             size={24}
             className="cursor-pointer"
             onClick={() =>
-              (location.href = "mailto:infinitechadvertisingcorp@gmail.com")
+              (location.href = "mailto:infinitechcorp.ph@gmail.com")
             }
           />
           <FaFacebook
