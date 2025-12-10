@@ -21,11 +21,11 @@ const initialValues: TestimonialFormValues = {
 }
 
 const schema = Yup.object().shape({
-  name: Yup.string().required("Name is required"),
-  position: Yup.string().required("Position is required"),
-  company: Yup.string().required("Company is required"),
+  name: Yup.string().trim().required("Name is required"),
+  position: Yup.string().trim().required("Position is required"),
+  company: Yup.string().trim().required("Company is required"),
   rating: Yup.number().required("Rating is required").min(1, "Please give a rating").max(5, "Maximum rating is 5 stars"),
-  message: Yup.string().min(20, "Message must be at least 20 characters").required("Message is required"),
+  message: Yup.string().trim().min(20, "Message must be at least 20 characters").required("Message is required"),
 })
 
 const TestimonialForm = () => {
