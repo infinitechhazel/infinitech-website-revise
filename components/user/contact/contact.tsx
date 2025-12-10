@@ -6,7 +6,7 @@ import Links from "@/components/user/contact/links"
 
 const Contact = () => {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen pt-7">
+    <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen pt-10 lg:mt-16">
       {/* Left side */}
       <div className="flex justify-center items-center container mx-auto py-8 lg:py-12 px-4">
         <div className="w-full max-w-lg">
