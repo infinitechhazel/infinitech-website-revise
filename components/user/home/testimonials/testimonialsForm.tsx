@@ -7,19 +7,24 @@ import { LuArrowRight } from "react-icons/lu"
 interface TestimonialFormValues {
   name: string
   position: string
+  company: string
+  rating: number
   message: string
 }
 
 const initialValues: TestimonialFormValues = {
   name: "",
   position: "",
+  company: "",
+  rating: 0,
   message: "",
 }
 
 const schema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
   position: Yup.string().required("Position is required"),
-  company: Yup.string(),
+  company: Yup.string().required("Company is required"),
+  rating: Yup.number().required("Rating is required").min(1, "Please give a rating").max(5, "Maximum rating is 5 stars"),
   message: Yup.string().min(20, "Message must be at least 20 characters").required("Message is required"),
 })
 
@@ -66,6 +71,35 @@ const TestimonialForm = () => {
               {({ field, meta }: FieldProps) => (
                 <div>
                   <Input {...field} type="text" size="lg" label="Company" variant="bordered" placeholder="eg. Google, Netflix, IBM..." />
+                  {meta.touched && meta.error && <small className="text-red-500">{meta.error}</small>}
+                </div>
+              )}
+            </Field>
+
+            {/* RATING */}
+            <Field name="rating">
+              {({ field, form, meta }: FieldProps) => (
+                <div>
+                  <label className="block text-sm font-medium mb-2 text-[#52525B]">Rating</label>
+                  <div className="flex space-x-1">
+                    {[1, 2, 3, 4, 5].map((star) => (
+                      <button
+                        type="button"
+                        key={star}
+                        onClick={() => form.setFieldValue(field.name, star)}
+                        className="focus:outline-none transition-transform duration-200 hover:scale-110 active:scale-95"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                          fill={star <= (field.value || 0) ? "#FFD700" : "#D1D5DB"}
+                          className="w-8 h-8 transition-colors duration-300"
+                        >
+                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.955a1 1 0 00.95.69h4.162c.969 0 1.371 1.24.588 1.81l-3.37 2.448a1 1 0 00-.364 1.118l1.287 3.955c.3.922-.755 1.688-1.54 1.118l-3.37-2.448a1 1 0 00-1.176 0l-3.37 2.448c-.785.57-1.84-.196-1.54-1.118l1.287-3.955a1 1 0 00-.364-1.118L2.075 9.382c-.783-.57-.38-1.81.588-1.81h4.162a1 1 0 00.95-.69l1.274-3.955z" />
+                        </svg>
+                      </button>
+                    ))}
+                  </div>
                   {meta.touched && meta.error && <small className="text-red-500">{meta.error}</small>}
                 </div>
               )}

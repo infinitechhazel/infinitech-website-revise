@@ -58,7 +58,7 @@ const Cards = () => {
       <div ref={sliderRef} className="keen-slider">
         {testimonials.map((testimonial, index) => (
           <div key={index} className="keen-slider__slide">
-            <Card className="bg-gray-100 shadow-none flex flex-col justify-between py-4">
+            <Card className="bg-gray-100 px-4 shadow-none flex flex-col justify-between py-4">
               <CardBody className="flex-1 py-4">
                 <p className="text-lg leading-relaxed font-medium">"{testimonial.message}"</p>
               </CardBody>
