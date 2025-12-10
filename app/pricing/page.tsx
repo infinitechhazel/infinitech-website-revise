@@ -4,6 +4,7 @@ import { useState } from "react"
 import PricingCard from "@/components/pricingCard"
 import { X, ShoppingCart, Mail, Loader2, Plus, Minus, Globe, CreditCard, Share, Share2, Video } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { useDeviceType } from "@/hooks/use-device"
 
 interface CartItem {
   planName: string
@@ -20,7 +21,7 @@ const PricingPage = () => {
   const [isSending, setIsSending] = useState(false)
   const [emailStatus, setEmailStatus] = useState<{ type: "success" | "error"; message: string } | null>(null)
   const [hoveredCol, setHoveredCol] = useState<number | null>(null)
-  const [clicked, setIsClicked] = useState<number | null>(null)
+  const device = useDeviceType()
 
   const services = {
     website: {
@@ -394,7 +395,7 @@ const PricingPage = () => {
       </section>
 
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <div className="flex flex-col xl:flex-row gap-6 max-w-7xl mx-auto">
+        <div className={`flex ${device === "laptop" ? "flex-row" : "flex-col"} gap-6 max-w-7xl mx-auto`}>
           <div
             className="flex flex-col gap-6 w-full mx-auto xl:flex-row md:gap-6 overflow-hidden md:overflow-visible"
             onPointerLeave={() => setHoveredCol(null)}
