@@ -389,7 +389,7 @@ const Quote = () => {
 
   return (
     <section>
-      <div className="flex flex-col justify-center px-4 md:px-12 xl:px-32 2xl:px-48 py-16">
+      <div className="flex flex-col justify-center px-4 md:px-12 xl:px-32 2xl:px-48 mt-12 py-10">
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between gap-4 pb-16">
           <div className="max-w-4xl">

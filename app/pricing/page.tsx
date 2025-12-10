@@ -5,6 +5,7 @@ import PricingCard from "@/components/pricingCard"
 import { X, ShoppingCart, Mail, Loader2, Plus, Minus, Globe, CreditCard, Share, Share2, Video } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { useDeviceType } from "@/hooks/use-device"
+import { poetsen_one } from "@/config/fonts"
 
 interface CartItem {
   planName: string
@@ -360,10 +361,12 @@ const PricingPage = () => {
       {/* Header Section */}
       <section className="container mx-auto px-4 sm:px-6 lg:px-8 mb-8 lg:mb-12">
         <div className="text-center max-w-4xl mx-auto">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-accent mb-4 leading-tight">Our Pricing Plans</h1>
-          <h1 className="text-3xl text-primary font-['Poetsen_One']">
-            Choose the perfect plan for your business. All plans include support and updates.
+          <h1 className={`text-5xl font-bold text-accent leading-tight ${poetsen_one.className}`}>
+            Pricing Plans
           </h1>
+          <h2 className="text-3xl text-primary font-['Poetsen_One']">
+            Choose the perfect plan for your business. All plans include support and updates.
+          </h2>
 
           <div className="flex justify-center gap-2 my-4">
             <button
