@@ -2,11 +2,8 @@
 
 import type React from "react"
 import { Check, ShoppingCart, Plus } from "lucide-react"
-import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
-import { useIsMobile } from "@/hooks/use-mobile"
-import { useIsTablet } from "@/hooks/use-tablet"
 import { useDeviceType } from "@/hooks/use-device"
 
 export interface Plan {
@@ -31,18 +28,18 @@ interface PricingCardProps {
   index: number
 }
 
-const gradients = ["from-cyan-600 to-blue-600", "from-pink-500 to-yellow-500", "from-green-400 to-teal-500", "from-purple-600 to-indigo-600"]
+const gradients = ["from-cyan-600 to-blue-600", "from-green-400 to-teal-500", "from-pink-500 to-yellow-500", "from-purple-600 to-indigo-600"]
 
 const PricingCard: React.FC<PricingCardProps> = ({ plan, billingPeriod, price, currency = "$", onAddToCart, isInCart, isColumnHovered, index }) => {
   const device = useDeviceType()
   const gradient = gradients[index % gradients.length]
-
 
   return (
     <motion.div
       className={cn(
         "relative bg-white border border-slate-200 rounded-2xl shadow-md group",
         plan.popular && "bg-amber-500 shadow-xl shadow-amber-500/20 border border-amber-500",
+        plan.name === "Elite" && " bg-gray-500 shadow-xl shadow-gray-500/20 border border-gray-500",
         isColumnHovered || device !== "laptop" ? "mb-20 rounded-t-2xl" : "rounded-2xl",
       )}
     >
@@ -59,13 +56,13 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, billingPeriod, price, c
       )}
 
       {/* CONTENT */}
-      <div
-        className="p-5 flex flex-col gap-2 mb-10"
-      >
+      <div className="p-5 flex flex-col gap-2 mb-10">
         {/* Plan Header */}
         <div>
-          <h3 className="text-lg font-bold text-black">{plan.name}</h3>
-          {(isColumnHovered || device !== "laptop") && plan.badge && <p className="text-xs">{plan.badge}</p>}
+          <h3 className={cn("text-lg font-bold text-black", plan.name === "Elite" && "text-white")}>{plan.name}</h3>
+          {(isColumnHovered || device !== "laptop") && plan.badge && (
+            <p className={cn("text-xs", plan.name === "Elite" && "text-white")}>{plan.badge}</p>
+          )}
         </div>
 
         {/* Features (shown only when column hovered) */}
@@ -92,8 +89,8 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, billingPeriod, price, c
                     transition={{ delay: idx * 0.05 }}
                     className="flex items-start gap-2"
                   >
-                    <Check className={`w-3.5 h-3.5 mt-0.5 text-black`} />
-                    <span className="text-black text-xs leading-relaxed">{feature}</span>
+                    <Check className={cn("w-3.5 h-3.5 mt-0.5 text-black", plan.name === "Elite" && "text-yellow-500")} />
+                    <span className={cn("text-black text-xs leading-relaxed", plan.name === "Elite" && "text-white")}>{feature}</span>
                   </motion.div>
                 ))}
               </div>
@@ -104,6 +101,7 @@ const PricingCard: React.FC<PricingCardProps> = ({ plan, billingPeriod, price, c
             className={cn(
               "absolute -bottom-10 right-0 border border-white shadow-xl bg-white rounded-b-3xl p-2",
               plan.popular && "bg-amber-500 shadow-xl shadow-amber-500/20 border border-amber-500",
+              plan.name === "Elite" && " bg-gray-500 shadow-xl shadow-gray-500/20 border border-gray-500",
             )}
           >
             <div className={`flex items-end justify-end gap-4 bg-gradient-to-r ${gradient} shadow-lg rounded-2xl p-3`}>
