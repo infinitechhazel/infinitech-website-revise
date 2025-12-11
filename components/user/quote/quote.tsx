@@ -391,7 +391,7 @@ const Quote = () => {
     <section>
       <div className="flex flex-col justify-center px-4 md:px-12 xl:px-32 2xl:px-48 mt-12 py-10">
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between gap-4 pb-16">
+        <div className="flex text-center justify-center mx-auto gap-4 pb-6">
           <div className="max-w-4xl">
             <h1 className={`text-4xl text-accent font-bold`}>GET A QUOTE</h1>
             <h1 className={`text-3xl text-primary ${poetsen_one.className}`}>
